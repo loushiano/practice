@@ -50,6 +50,8 @@ public class User {
 	}
 	public void reset(){
 		position =new ArrayList<String>();
+		i=new ArrayList<Integer>();
+		j=new ArrayList<Integer>();
 	}
 	
 

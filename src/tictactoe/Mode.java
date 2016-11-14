@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class Mode extends Observable {
-	private View view;
+	
 	private User userO;
 	private User userX;
 	private int turn;
@@ -14,7 +14,7 @@ public class Mode extends Observable {
 		userX=new User("X");
 	}
 	public void SetObserver(View view){
-		this.view=view;
+		
 		addObserver(view);
 	}
 
@@ -27,8 +27,9 @@ public class Mode extends Observable {
 			if(b){
 			setChanged();
 			notifyObservers(userX);
-			}
+			}else{
 			turn=1;
+			}
 		}else{
 			userO.addPlayedTurn(actionCommand);
 			setChanged();
@@ -37,8 +38,9 @@ public class Mode extends Observable {
 			if(b){
 			setChanged();
 			notifyObservers(userO);
-			}
+			}else{
 			turn=0;
+			}
 		}
 		
 	}
@@ -65,11 +67,11 @@ public class Mode extends Observable {
 			return false;
 		}
 		if(threeSame(user.getJ())){
-			
+			System.out.println("hi");
 			return true;
 		}
 		if(threeSame(user.getI())){
-			
+			System.out.println("lol");
 			return true;
 		}
 		if(isDiagonal(user.getPosition())){
