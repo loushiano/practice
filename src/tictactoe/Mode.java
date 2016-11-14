@@ -1,5 +1,6 @@
 package tictactoe;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class Mode extends Observable {
@@ -42,7 +43,7 @@ public class Mode extends Observable {
 		
 	}
 	public boolean checkWinner(User user){
-		return user.CheckForStraighLine();
+		return checkForStraightLine(user);
 	}
 	public static void main(String args[]){
 		Mode mode=new Mode();
@@ -59,5 +60,37 @@ public class Mode extends Observable {
 		setChanged();
 		notifyObservers(null);
 	}
-
+	public boolean checkForStraightLine(User user){
+		if(user.getPosition().size()<3){
+			return false;
+		}
+		if(threeSame(user.getJ())){
+			
+			return true;
+		}
+		if(threeSame(user.getI())){
+			
+			return true;
+		}
+		if(isDiagonal(user.getPosition())){
+			return true;
+		}
+		
+		
+		return false;	
+	}
+	private boolean threeSame(ArrayList<Integer> i) {
+		int check=i.get(0);
+		int count=0;
+		for(int j=1;j<i.size();j++){
+			if(check==i.get(j)){
+				count++;
+			}
+		}
+		return count==2;
+		
+	}
+	public boolean isDiagonal(ArrayList<String> i){
+			return (i.contains("00")&&i.contains("11")&&i.contains("22")) ||(i.contains("02")&&i.contains("11")&&i.contains("20"));
+	}
 }
